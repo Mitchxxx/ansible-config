@@ -44,4 +44,4 @@
 
     - name: set a new timezone to East America
       timezone:
-        name: America/New_york
+        name: America/Newyork
