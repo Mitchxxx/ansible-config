@@ -42,6 +42,6 @@
         state: touch
         mode: '0644'
 
-    - name: set a new timezone to East America
+    - name: set a new timezone to Africa
       timezone:
         name: America/Newyork
