@@ -44,4 +44,4 @@
 
     - name: set a new timezone to Africa
       timezone:
-        name: Nigeria/Lagos
+        name: Africa/Lagos
