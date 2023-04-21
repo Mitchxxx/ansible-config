@@ -24,3 +24,24 @@
       apt:
         name: wireshark
         state: latest
+
+
+- name: create directory, file and set timezone on all servers
+  hosts: webservers, nfs, db, lb
+  become: true
+  tasks:
+    - name: create a directory
+      file:
+        path: /home/sample
+        state: directory
+        mode: '0755'
+
+    - name: create a new file
+      file:
+        path: /home/sample/ansible.txt
+        state: touch
+        mode: '0644'
+
+    - name: set a new timezone to East America
+      timezone:
+        name: America/New_york
