@@ -12,7 +12,7 @@
 
 - hosts: webservers
 - name: Webserver assigments
-  import_playbook: ../static-assignments/webservers.yml
+  import_playbook: ../static-assignments/uat-webservers.yml
 
 - name: Loadbalancers assignment
        hosts: lb
