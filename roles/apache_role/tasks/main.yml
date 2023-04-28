@@ -1,6 +1,7 @@
 ---
+
 - name: Install apache and dependencies
-  become: yes
+  become: true
   apt:
     name:
       - apache2
@@ -8,8 +9,8 @@
     state: present
 
 - name: Start service httpd, if not started
-  become: yes
-  ansible.builtin.service:
+  become: true
+  service:
     name: apache2
     state: started
 
@@ -23,7 +24,7 @@
     a2enmod proxy_http
     a2enmod headers
     a2enmod lbmethod_bytraffic
-  notify: Restart apache2 service
+    notify: Restart apache2 service
 
 - name: Copy configuration file
   become: yes
@@ -33,7 +34,7 @@
     owner: root
     group: root
     mode: 0664
-  notify: Restart apache2 service
+    notify: Restart apache2 service
 
 - name: Enable load balancer configuration
   become: yes
