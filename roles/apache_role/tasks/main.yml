@@ -1,0 +1,42 @@
+
+---
+- name: Install apache and dependencies
+  become: true
+  yum:
+    name:
+      - httpd
+      - libxml2-dev
+    state: present
+
+- name: Start service httpd, if not started
+  become: true
+    name: httpd
+    state: started
+
+
+- name: Enable required Apache2 Modules
+  become: yes
+  shell: |
+    a2enmod rewrite
+    a2enmod proxy
+    a2enmod proxy_balancer
+    a2enmod proxy_http
+    a2enmod headers
+    a2enmod lbmethod_bytraffic
+  notify: Restart httpd service
+
+- name: Copy configuration file
+  become: yes
+  template:
+    src: apache.conf.j2
+    dest: /etc/httpd/sites-available/000-default.conf
+    owner: root
+    group: root
+    mode: 0664
+  notify: Restart httpd service
+
+- name: Enable load balancer configuration
+  become: true
+  command: "a2enconf lb"
+  notify: Restart httpd service
+    
