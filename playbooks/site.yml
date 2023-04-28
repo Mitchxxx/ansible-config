@@ -7,7 +7,14 @@
   tags:
     - always
 
+- name: Delete wireshark installation
+  import_playbook: ../static-assignments/common-del.yml
 
-- hosts: uat-webservers
+- hosts: webservers
 - name: Webserver assigments
-  import_playbook: ../static-assignments/uat-webservers.yml
+  import_playbook: ../static-assignments/webservers.yml
+
+- name: Loadbalancers assignment
+       hosts: lb
+         - import_playbook: ../static-assignments/loadbalancers.yml
+        when: load_balancer_is_required 
