@@ -1,0 +1,32 @@
+---
+
+- name: Install nginx
+  become: true
+  apt:
+    name: nginx
+    state: present
+
+
+
+- name: start nginx
+  become: true
+  service:
+    name: nginx
+    state: started
+
+- name: Insert configuration file in server block
+  become: true
+  blockinfile:
+     path: /etc/nginx/nginx.conf
+     block: "{{ lookup('file', '../templates/nginx.conf' ) }}"
+     insertafter: "http {"
+
+
+- name: Comment out site-enabled
+  become: true
+  replace:
+     path: /etc/nginx/nginx.conf
+     regexp: '(.*enabled.*)'
+     replace: '#\1'
+         
+  notify: Restart nginx service
