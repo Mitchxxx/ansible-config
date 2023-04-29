@@ -13,7 +13,31 @@ pipeline {
         stage('Test'){
             steps {
                 script {
-                    sh 'echo "Testing stsge"'
+                    sh 'echo "Testing stage"'
+                }
+            }
+        }
+
+        stage('Package'){
+            steps {
+                script {
+                    sh 'echo "Packaging App"'
+                }
+            }
+        }
+
+        stage('Deploy'){
+            steps {
+                script {
+                    sh 'echo "Deploying App"'
+                }
+            }
+        }
+
+        stage('Clean Up'){
+            steps {
+                script {
+                    sh 'echo "Clean Up Stage"'
                 }
             }
         }
