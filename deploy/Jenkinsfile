@@ -36,7 +36,7 @@ pipeline {
 
         stage('Clean Up'){
             steps{
-                    cleanWs(cleanWhenAborted: true, cleanWhenfailure: true, cleanWhenNotBuilt: true, cleanWhenUnstable: true, deleteDirs: true)
+                    cleanWs(cleanWhenAborted: true, cleanWhenFailure: true, cleanWhenNotBuilt: true, cleanWhenUnstable: true, deleteDirs: true)
             }
         }
     }
