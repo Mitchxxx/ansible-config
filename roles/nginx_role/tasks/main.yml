@@ -2,7 +2,7 @@
 
 - name: Install nginx
   become: true
-  apt:
+  yum:
     name: nginx
     state: present
 
@@ -14,19 +14,28 @@
     name: nginx
     state: started
 
-- name: Insert configuration file in server block
+- name: install php
   become: true
-  blockinfile:
-     path: /etc/nginx/nginx.conf
-     block: "{{ lookup('file', '../templates/nginx.conf' ) }}"
-     insertafter: "http {"
+  yum:
+    name:
+      - php
+      - phph-mysqlnd
+      - php-gd
+      - php-curl
+    state: present
+# - name: Insert configuration file in server block
+#   become: true
+#   blockinfile:
+#      path: /etc/nginx/nginx.conf
+#      block: "{{ lookup('file', '../templates/nginx.conf' ) }}"
+#      insertafter: "http {"
 
 
-- name: Comment out site-enabled
-  become: true
-  replace:
-     path: /etc/nginx/nginx.conf
-     regexp: '(.*enabled.*)'
-     replace: '#\1'
+# - name: Comment out site-enabled
+#   become: true
+#   replace:
+#      path: /etc/nginx/nginx.conf
+#      regexp: '(.*enabled.*)'
+#      replace: '#\1'
          
-  notify: Restart nginx service
+#   notify: Restart nginx service
