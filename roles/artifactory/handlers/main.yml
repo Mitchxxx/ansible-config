@@ -1,0 +1,8 @@
+---
+# handlers file for distribution
+- name: Restart artifactory
+  become: true
+  ansible.builtin.systemd:
+    name: "{{ artifactory_daemon }}"
+    state: restarted
+    daemon_reload: true
