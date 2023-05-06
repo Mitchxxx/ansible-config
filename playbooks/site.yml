@@ -16,9 +16,9 @@
 #   import_playbook: ../static-assignments/loadbalancers.yml
 #   when: load_balancer_is_required
 
-- hosts: db
-- name: database assignment
-  import_playbook: ../static-assignments/database.yml
+# - hosts: db
+# - name: database assignment
+#   import_playbook: ../static-assignments/database.yml
 
 # - hosts: nginx
 # - name: nginx assignment
@@ -27,3 +27,7 @@
 # - hosts: artifactory
 # - name: artifactory assignment
 #   import_playbook: ../static-assignments/artifactory.yml
+
+- hosts: todo
+- name: deploy todo assignment
+  import_playbook: ../static-assignments/deployment.yml
