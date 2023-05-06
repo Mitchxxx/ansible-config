@@ -31,3 +31,7 @@
 - hosts: todo
 - name: deploy todo assignment
   import_playbook: ../static-assignments/deployment.yml
+
+- hosts: sonarqube
+- name: deploy todo assignment
+  import_playbook: ../static-assignments/deployment.yml
