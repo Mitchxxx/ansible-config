@@ -55,18 +55,18 @@
         remote_src: yes
 
     - name: deploy the code
-        copy:
-          src: /home/ec2-user/var/lib/jenkins/workspace/php-todo_main/
-          dest: /var/www/html/
-          force: yes
-          remote_src: yes
+      copy:
+        src: /home/ec2-user/var/lib/jenkins/workspace/php-todo_main/
+        dest: /var/www/html/
+        force: yes
+        remote_src: yes
 
     - name: remove Apache default page
-        file:
-          path: /etc/httpd/conf.d/welcome.conf
-          state: absent
+      file:
+        path: /etc/httpd/conf.d/welcome.conf
+        state: absent
 
     - name: restart httpd
-        service:
-          name: httpd
-          state: restarted
+      service:
+        name: httpd
+        state: restarted
