@@ -46,7 +46,7 @@
         url: http:http://34.245.98.204:8082/artifactory/PBL/php-todo
         dest: /home/ec2-user/
         url_username: admin
-        url_password: Macaustin1990!
+        url_password: cmVmdGtuOjAxOjE3MTQ5MDgwNzg6WWNYTmRNcVBSWFNXaWhvaUdONEpSMkdkWUR5
 
     - name: Unzip the artifacts
       unarchive:
